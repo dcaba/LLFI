@@ -1,22 +1,23 @@
 LLFI
 ====
 
-LLFI is an LLVM based fault injection tool, that injects faults into the LLVM IR of the application source code.  The faults can be injected into specific program points, and the effect can be easily tracked back to the source code.  LLFI is typically used to map fault characteristics back to source code, and hence understand source level or program characteristics for various kinds of fault outcomes. Detailed documentation about LLFI can be found at: https://github.com/DependableSystemsLab/LLFI/wiki    
+LLFI is an LLVM based fault injection tool, that injects faults into the LLVM IR of the application source code.  The faults can be injected into specific program points, and the effect can be easily tracked back to the source code.  LLFI is typically used to map fault characteristics back to source code, and hence understand source level or program characteristics for various kinds of fault outcomes. Detailed documentation about LLFI can be found at: https://github.com/DependableSystemsLab/LLFI/wiki
 
 Please join the following Google Groups for asking questions about LLFI that are not answered in the documentation: llfi-development@googlegroups.com
 
 Auto-Installer
 --------------
-This is the recommended method for building the LLFI. If you wish to build the LLFI via the auto-installer, you *do not need* to clone the LLFI git repository. Simply download the installer script by itself, and it will fetch the latest version of the git repository for you. The LLFI auto-installer takes the form of a single python script (installer/installLLFI.py). To run the script, simply copy it into the directory where you would like to build the LLFI and, from the command line, run `python3 InstallLLFI.py`.
-  
+This is the recommended method for building the LLFI. If you wish to build the LLFI via the auto-installer, you *do not need* to clone the LLFI git repository. Simply download the installer script by itself, and it will fetch the latest version of the git repository for you. The LLFI auto-installer takes the form of a single python script (`installer/installLLFI.py`). To run the script, simply copy it into the directory where you would like to build the LLFI and, from the command line, run `python3 InstallLLFI.py`.
+
 Dependencies:
   1. 64 Bit Machine
   2. 64 Bit Linux or OS X
-  3. Cmake (mininum v2.8)
+  3. Cmake (mininum v2.8) and a c++ compiler (for instance, g++)
   4. Python 3 and above
   5. tcsh (for GUI)
   6. GraphViz package (for visualizing error propagation)
-  7. Internet Connection
+  7. unzip binary (decompress downloads)
+  8. Internet Connection
 
 GUI Dependencies:
   1. JDK7/JDK8 with JavaFX
@@ -39,7 +40,7 @@ Manual Install
 This method is also available, and may be more suitable if you want more control over the location of the LLVM build that the LLFI requires (ie, you already have LLVM built and wish to use that build).
 
 Dependencies:
-  
+
   1. 64 Machine with 64 bit Linux or OS X
   2. CMake (minimum v2.8)
   3. Python 3 and above
@@ -55,7 +56,7 @@ GUI Dependencies:
   2. tcsh shell
 
 Building:
-  
+
   Run `./setup --help` for build instructions.
 ```
   $ ./setup --help
@@ -94,17 +95,17 @@ Running all regression tests after installation is highly recommended. Note that
 VirtualBox Image
 -----------------
 
-If you want to quickly try out LLFI, an Ubuntu image with LLFI and its dependencies pre-installed 
+If you want to quickly try out LLFI, an Ubuntu image with LLFI and its dependencies pre-installed
 is available [here](https://drive.google.com/file/d/0B5inNk8m9EfeM096ejdfX2pTTUU/view?usp=sharing) (2.60GB). This image is built with VirtualBox v4.3.26, with Ubuntu 14.04.2 LTS, LLVM v3.4, CMake v3.4 and the current master branch version of LLFI (as of Sep 16th, 2015).
 
-user: `llfi`  
+user: `llfi`
 password: `root`
 
-`<LLFI_SRC_ROOT>` is located under `~/Desktop/llfisrc/`.  
-`<LLFI_BUILD_ROOT>` is located under `~/Desktop/llfi/`.  
-`<LLVM_SRC_ROOT>` is located under `~/Desktop/llvmsrc/`.  
-`<LLVM_DST_ROOT>` is located under `~/Desktop/llvm/`.  
-`<LLVM_GXX_BIN_DIR >` is located under `~/Desktop/llvm/bin/`.  
+`<LLFI_SRC_ROOT>` is located under `~/Desktop/llfisrc/`.
+`<LLFI_BUILD_ROOT>` is located under `~/Desktop/llfi/`.
+`<LLVM_SRC_ROOT>` is located under `~/Desktop/llvmsrc/`.
+`<LLVM_DST_ROOT>` is located under `~/Desktop/llvm/`.
+`<LLVM_GXX_BIN_DIR >` is located under `~/Desktop/llvm/bin/`.
 
 Sample tests can be found under `~/Desktop/test/`.
 
@@ -115,7 +116,7 @@ Running
 You can use test programs in the directory `sample_programs/` or `test_suite/PROGRAMS/` to test LLFI. Programs in the `sample_programs` directory already contains a valid `input.yaml` file.
 ####Command line
 Example program: `factorial`
-  1. Copy the `sample_programs/factorial/` directory to your project directory. 
+  1. Copy the `sample_programs/factorial/` directory to your project directory.
   2. Change to your `factorial` directory Build a single IR file with the LLFI tool `GenerateMakefile`
       ```
       <LLFI_BUILD_ROOT>/tools/GenerateMakefile --readable --all -o factorial.ll
@@ -145,22 +146,22 @@ Execute `<LLFI_BUILD_ROOT>/bin/llfi-gui` to start the **GUI**. The outputs will 
 ####Web GUI Development Environment Setup
 Dependencies:
 Nodejs
-webpack   
+webpack
 
-Steps to set up the development environment:   
-1: Download this project from Git   
-2: Download NodeJs   
-3: Install libraries: Go to the web-app directory and run "npm install"   
-4: Install Webpack: In the same directory as step 3, run "sudo npm install -g webpack"   
-5: Configurate the LLFI root path for the server:   
-The default bevaiour of the program use environment variable $llfibuild as the path of the llfi build directory  
-You can set the environment variable llfibuild in your system to point it to the LLFI build directory in your local machine.   
+Steps to set up the development environment:
+1: Download this project from Git
+2: Download NodeJs
+3: Install libraries: Go to the web-app directory and run "npm install"
+4: Install Webpack: In the same directory as step 3, run "sudo npm install -g webpack"
+5: Configurate the LLFI root path for the server:
+The default bevaiour of the program use environment variable $llfibuild as the path of the llfi build directory
+You can set the environment variable llfibuild in your system to point it to the LLFI build directory in your local machine.
 
-Start the server:   
-Go to the /web-app/server folder and run "node server.js"  
+Start the server:
+Go to the /web-app/server folder and run "node server.js"
 
-Start the front-end dev tool:   
-Go to the web-app directory and run "webpack" or "webpack -w"   
+Start the front-end dev tool:
+Go to the web-app directory and run "webpack" or "webpack -w"
 
 Results
 -------
@@ -180,5 +181,5 @@ References
 * [LLFI Paper](http://blogs.ubc.ca/karthik/2013/02/15/llfi-an-intermediate-code-level-fault-injector-for-soft-computing-applications/)
 * [LLFI Wiki](https://github.com/DependableSystemsLab/LLFI/wiki)
 
-======		
+======
 Read *caveats.txt* for caveats and known problems.
