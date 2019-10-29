@@ -39,38 +39,14 @@ PYAML311DOWNLOAD = {'URL':"http://pyyaml.org/download/pyyaml/PyYAML-3.11.tar.gz"
                  'EXTRACTFLAG':True,
                  'DOWNLOADFLAG':True}
 
-#LLVM33 Targets:
-LLVM33DOWNLOAD = {'URL':"http://llvm.org/releases/3.3/llvm-3.3.src.tar.gz",
-                'FILENAME':"llvm-3.3.src.tar.gz",
-                'MD5':"40564e1dc390f9844f1711c08b08e391",
-                'EXTRACTPATH':"llvmsrc",
-                'EXTRACTEDNAME':'llvm-3.3.src',
-                'ARCHIVETYPE':'.tar.gz',
-                'EXTRACTFLAG':True,
-                'DOWNLOADFLAG':True}
-CLANG33DOWNLOAD = {'URL':"http://llvm.org/releases/3.3/cfe-3.3.src.tar.gz",
-                 'FILENAME':"cfe-3.3.src.tar.gz",
-                 'MD5':"8284891e3e311829b8e44ac813d0c9ef",
-                 'EXTRACTPATH':"llvmsrc/tools/clang",
-                 'EXTRACTEDNAME':'cfe-3.3.src',
-                 'ARCHIVETYPE':'.tar.gz',
-                 'EXTRACTFLAG':True,
-                 'DOWNLOADFLAG':True}
 #Primary Repository LLFI
-LLFIPUBLICDOWNLOAD = {'URL':'https://github.com/DependableSystemsLab/LLFI/archive/master.zip',
+# Note: md5 here is never going to match: current master md5 will change as soon as the development
+# is merged, and we cannot predict the md5 we are going to have until its merged - fish bitting its tail
+LLFIPUBLICDOWNLOAD = {'URL':'https://github.com/dcaba/LLFI/archive/master.zip',
                       'FILENAME':"master.zip",
                       'MD5':"04fcd2c0dc23b97f72eaf6b76e021821",
                       'EXTRACTPATH':"llfisrc",
                       'EXTRACTEDNAME':'LLFI-master',
-                      'ARCHIVETYPE':'.zip',
-                      'EXTRACTFLAG':True,
-                      'DOWNLOADFLAG':True}
-
-LLFIMERGEDOWNLOAD = {'URL':'https://github.com/DependableSystemsLab/LLFI/archive/merge.zip',
-                      'FILENAME':"merge.zip",
-                      'MD5':"04fcd2c0dc23b97f72eaf6b76e021821",
-                      'EXTRACTPATH':"llfisrc",
-                      'EXTRACTEDNAME':'LLFI-merge',
                       'ARCHIVETYPE':'.zip',
                       'EXTRACTFLAG':True,
                       'DOWNLOADFLAG':True}
