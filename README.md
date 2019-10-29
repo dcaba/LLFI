@@ -13,7 +13,7 @@ Dependencies:
   1. 64 Bit Machine
   2. 64 Bit Linux or OS X
   3. Cmake (mininum v2.8) and a c++ compiler (for instance, g++)
-  4. Python 3 and above
+  4. Python 3 and above, with yaml support
   5. tcsh (for GUI)
   6. GraphViz package (for visualizing error propagation)
   7. unzip binary (decompress downloads)

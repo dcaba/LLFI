@@ -38,14 +38,6 @@ PYAML311DOWNLOAD = {'URL':"http://pyyaml.org/download/pyyaml/PyYAML-3.11.tar.gz"
                  'ARCHIVETYPE':'.tar.gz',
                  'EXTRACTFLAG':True,
                  'DOWNLOADFLAG':True}
-LLFIDOWNLOAD = {'URL':'https://github.com/scoult3r/LLFI/archive/master.zip', #"https://github.com/DependableSystemsLab/LLFI/archive/master.zip",
-                'FILENAME':"master.zip",
-                'MD5':"fc3ba3cfea7ae3236bf027b847058105", #"c9a8c3ffcbd033a4d3cf1dc9a25de09c" #You will have to change this outside of the git repo
-                'EXTRACTPATH':"llfisrc",                                                      #If you change this md5 within the repo, the md5 of the
-                'EXTRACTEDNAME':'LLFI-master',                                                #repo will change
-                'ARCHIVETYPE':'.zip',
-                'EXTRACTFLAG':True,
-                'DOWNLOADFLAG':True}
 
 #LLVM33 Targets:
 LLVM33DOWNLOAD = {'URL':"http://llvm.org/releases/3.3/llvm-3.3.src.tar.gz",
@@ -116,7 +108,7 @@ def checkDep(name, execName, versionArg, printParseFunc, parseFunc, minVersion, 
     except:
       print("Warning, " + name + " detected on path, but unable to parse version info.")
       print("Please ensure that " + name + " is at least of version: " + '.'.join([str(x) for x in minVersion]))
-      return True   
+      return True
   except(subprocess.CalledProcessError):
     print("Error: " + name + " (" + execName + ") not found on path")
     print("       Pease ensure " + name + " is installed and is available on the path")
@@ -141,11 +133,11 @@ def CmakePrintParse(version):
 def CmakeParse(version):
   return version.split()[2].split('.')[:2]
 
-cmakeMsg = "\tCmake 2.8+ cant be downloaded from:\n\thttp://www.cmake.org/cmake/resources/software.html" 
+cmakeMsg = "\tCmake 2.8+ cant be downloaded from:\n\thttp://www.cmake.org/cmake/resources/software.html"
 
 def JavaPrintParse(version):
   return version.split()[2][1:-1]
-    
+
 def JavaParse(version):
   return version.split()[2][1:-1].split('.')[:2]
 
@@ -187,7 +179,7 @@ def checkDependencies(checkJava=True):
     hasAll = checkDep("Python 3", "python3", "--version", python3PrintParse, python3Parse, [3,2], python3Msg) and hasAll
     hasAll = checkDep("Cmake","cmake","--version", CmakePrintParse, CmakeParse, [2,8], cmakeMsg) and hasAll
     hasAll = checkDep("tcsh", "tcsh", "--version", tcshPrintParse, tcshParse,[6,0], tcshMsg) and hasAll
-    
+
     if checkJava:
         hasAll = checkDep("Java", "java", "-version", JavaPrintParse, JavaParse, [1,7], javaMsg) and hasAll
         hasAll = checkDep("JavaC", "javac", "-version", JavaCPrintParse, JavaCParse, [1,7], javacMsg) and hasAll
@@ -403,7 +395,7 @@ def updateGUIXMLBuildPath(newPath):
     if path.get('id') == "JavaFX SDK.libraryclasspath":
       pathelement = path.find('./pathelement[@location]')
       pathelement.set("location", newPath + "jfxrt.jar")
-      
+
   for path in root.iter('target'):
     if path.get('name') == "jar":
       buildelement = path.find('./jar[@destfile]')
@@ -413,7 +405,7 @@ def updateGUIXMLBuildPath(newPath):
     if target.get('name') == "jar":
       element = target.find("./jar/zipfileset[@includes='jfxrt.jar']")
       element.set("dir", newPath)
-  tree.write('llfisrc/Gui_sourceCode/build.xml')    
+  tree.write('llfisrc/Gui_sourceCode/build.xml')
 
 
 def getJavaFXLibLocation():
@@ -430,7 +422,7 @@ def getJavaFXLibLocation():
       javaLibPath = javaBinPath[:-9] + "/lib/"
     else:
       javaLibPath = javaBinPath[:-9] + "/jre/lib/"
-  
+
   if (os.path.exists(os.path.join(javaLibPath, "ext/jfxrt.jar"))):
     javaLibPath = os.path.join(javaLibPath, "ext/")
   print("Detecting JFX Lib at " + str(javaLibPath))
@@ -521,10 +513,10 @@ if __name__ == "__main__":
     currPath = os.getcwd()
     if os.path.isdir(LLFIROOTDIRECTORY):
       os.chdir(LLFIROOTDIRECTORY)
-      for target in DOWNLOADTARGETS:  
+      for target in DOWNLOADTARGETS:
         subprocess.call(["rm", "-rf", target['EXTRACTPATH']])
       print("Done.")
-    os.chdir(currPath)  
+    os.chdir(currPath)
   print("Installing LLFI to: " + os.path.abspath(LLFIROOTDIRECTORY))
   if not args.noDownload:
     DownloadSources(DOWNLOADTARGETS, DOWNLOADSDIRECTORY)
@@ -538,4 +530,3 @@ if __name__ == "__main__":
     buildPyYaml(args.forceBuildPyYaml)
   if args.runTests:
     runTests()
-
