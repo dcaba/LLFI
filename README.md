@@ -11,25 +11,24 @@ This is the recommended method for building the LLFI. If you wish to build the L
 
 Dependencies:
   1. 64 Bit Machine
-  2. 64 Bit Linux or OS X
-  3. Cmake (mininum v2.8) and a c++ compiler (for instance, g++)
-  4. Python 3 and above, with yaml support
-  5. tcsh (for GUI)
-  6. GraphViz package (for visualizing error propagation)
-  7. unzip binary (decompress downloads)
-  8. Internet Connection
+  1. 64 Bit Linux or OS X
+  1. Cmake (mininum v2.8) and a c++ compiler (for instance, g++)
+  1. Python 3 and above, with yaml support
+  1. GraphViz package (for visualizing error propagation)
+  1. unzip binary (decompress downloads)
+  1. Internet Connection
 
 GUI Dependencies:
   1. JDK7/JDK8 with JavaFX
-  2. tcsh shell
+  1. tcsh shell
 
 Usage:
 run "python3 InstallLLFI.py -h" to see all running options/guidelines
   1. Copy the InstallLLFI.py script to where you want to build the LLFI
-  2. Make sure you are _not_ logged in as root
-  2. Run "python3 InstallLLFI.py"
-  3. Wait for compilation to finish
-  4. Run the GUI by executing "./llfi-gui" under the bin/ folder
+  1. Make sure you are _not_ logged in as root
+  1. Run "python3 InstallLLFI.py"
+  1. Wait for compilation to finish
+  1. Run the GUI by executing "./llfi-gui" under the bin/ folder
 
 About tcsh:
 

@@ -40,8 +40,9 @@ PYAML311DOWNLOAD = {'URL':"http://pyyaml.org/download/pyyaml/PyYAML-3.11.tar.gz"
                  'DOWNLOADFLAG':True}
 
 #Primary Repository LLFI
-# Note: md5 here is never going to match: current master md5 will change as soon as the development
-# is merged, and we cannot predict the md5 we are going to have until its merged - fish bitting its tail
+# Note: md5 here is never going to match: current master md5 will change as soon as the development,
+# or just a change in this specific md5 field, is merged, and we cannot predict the md5 we are going
+# to have until its merged - fish bitting its tail
 LLFIPUBLICDOWNLOAD = {'URL':'https://github.com/dcaba/LLFI/archive/master.zip',
                       'FILENAME':"master.zip",
                       'MD5':"04fcd2c0dc23b97f72eaf6b76e021821",
